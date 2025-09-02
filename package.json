@@ -1,6 +1,28 @@
 {
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/main.js",
+    "watch": "npx @tailwindcss/cli -i ./src/public/input.css -o ./src/public/output.css --watch",
+    "run": "node src/main.js && npx @tailwindcss/cli -i ./src/public/input.css -o ./src/public/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/10f7c7/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/10f7c7/portfolio/issues"
+  },
+  "homepage": "https://github.com/10f7c7/portfolio#readme",
+  "description": "",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
+    "express": "^5.1.0",
+    "npm-watch": "^0.13.0",
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
