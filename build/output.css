@@ -579,11 +579,17 @@
       gap: calc(0.25rem * 4);
     }
   }
+  .m-5 {
+    margin: calc(var(--spacing) * 5);
+  }
   .m-20 {
     margin: calc(var(--spacing) * 20);
   }
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
+  }
+  .mx-20 {
+    margin-inline: calc(var(--spacing) * 20);
   }
   .my-0 {
     margin-block: calc(var(--spacing) * 0);
@@ -689,6 +695,9 @@
   }
   .flex {
     display: flex;
+  }
+  .w-fit {
+    width: fit-content;
   }
   .flex-1 {
     flex: 1;
