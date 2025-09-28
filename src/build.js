@@ -93,9 +93,8 @@ picturesSorted.forEach(item => {
 
   itemHTML = itemHTML.replace("%path%", item.parentPath.replace("src/public", "") + "/" + item.name);
   itemHTML = itemHTML.replace("%name%", item.name);
-  itemHTML = itemHTML.replace("%itempath%", path);
-
-  picturesHTML += itemHTML;
+  // itemHTML = itemHTML
+  picturesHTML += itemHTML.replace("%hover%", "hover:translate-2 transition mb-9").replace("%itempath%", `href="${path}"`).replace("%height%", "");
 
 
 
@@ -103,7 +102,7 @@ picturesSorted.forEach(item => {
 
   var itemitemHTML = fs.readFileSync("./src/page/collections/(item)/index.html").toString();
 
-  itemitemHTML = itemitemHTML.replace("%item%", itemHTML);
+  itemitemHTML = itemitemHTML.replace("%item%", itemHTML.replace("%hover%", "").replace("%itempath%", "").replace("%height%", "h-[77vh]"));
 
   itemindexHTML = addNav(itemindexHTML, path);
 
