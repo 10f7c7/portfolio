@@ -30,7 +30,7 @@ function addNav(data, path) {
     return navPath.replaceAll("%location%", level).replace("%path%", pathLvl);
   });
 
-  console.log(levels);
+  // console.log(levels);
 
   return data.replace("%nav%", nav.replace("%path%", levels.join('')));
 
@@ -42,7 +42,7 @@ function addNav(data, path) {
 fs.rmSync("./build", { recursive: true, force: true });
 fs.mkdirSync("./build");
 // fs.copyFileSync("./src/public/output.css", "./build/output.css");
-fs.cpSync("./src/public/img", "./build/img", { recursive: true, preserveTimestamps: true });
+fs.cpSync("./src/img", "./build/img", { recursive: true, preserveTimestamps: true });
 fs.mkdirSync("./build/collections");
 
 
@@ -68,13 +68,13 @@ var collectionsHTML = fs.readFileSync("./src/page/collections/index.html").toStr
 
 var picturesHTML = "";
 
-const pictures = fs.readdirSync("src/public/img/collections", { "withFileTypes": true });
+const pictures = fs.readdirSync("src/img/collections", { "withFileTypes": true });
 
 
 const picturesSorted = pictures.map(function(file) {
   return {
     name: file.name,
-    time: fs.statSync("src/public/img/collections" + '/' + file.name).mtime.getTime(),
+    time: fs.statSync("src/img/collections" + '/' + file.name).mtime.getTime(),
     parentPath: file.parentPath,
     isDir: file.isDirectory()
   };
@@ -83,15 +83,15 @@ const picturesSorted = pictures.map(function(file) {
     return b.time - a.time;
   })
 
-console.log(pictures);
-console.log(picturesSorted);
+// console.log(pictures);
+// console.log(picturesSorted);
 
 
 picturesSorted.forEach(item => {
   var itemHTML = fs.readFileSync("./src/page/collections/(item).html").toString();
-  var path = item.parentPath.replace("src/public/img", "") + "/" + item.name;
+  var path = item.parentPath.replace("src/img", "") + "/" + item.name;
 
-  itemHTML = itemHTML.replace("%path%", item.parentPath.replace("src/public", "") + "/" + item.name);
+  itemHTML = itemHTML.replace("%path%", item.parentPath.replace("src", "") + "/" + item.name);
   itemHTML = itemHTML.replace("%name%", item.name);
   // itemHTML = itemHTML
   picturesHTML += itemHTML.replace("%hover%", "hover:translate-2 transition mb-9").replace("%itempath%", `href="${path}"`).replace("%height%", "");
