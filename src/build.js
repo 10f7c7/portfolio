@@ -1,9 +1,11 @@
 const fs = require('fs');
+const f5stego = require("f5stegojs");
 
 // app.use('/', express.static(path.join(__dirname, 'public')));
 
 //TODO: make program run and auto compile on save using `npm-watch`
 
+const stegKey = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const templateDir = "./src/templates/"
 
@@ -72,15 +74,23 @@ const pictures = fs.readdirSync("src/img/collections", { "withFileTypes": true }
 
 
 const picturesSorted = pictures.map(function(file) {
+  const stegger = new f5stego(stegKey);
+  const path = "src/img/collections" + '/' + file.name;
+  const input = fs.readFileSync(path);
+  stegger.parse(input);
+  const APPn = String.fromCharCode(stegger.getAPPn(0xEF));
+
+
   return {
     name: file.name,
-    time: fs.statSync("src/img/collections" + '/' + file.name).mtime.getTime(),
+    appn: APPn,
+    // time: fs.statSync("src/img/collections" + '/' + file.name).mtime.getTime(),
     parentPath: file.parentPath,
     isDir: file.isDirectory()
   };
 })
   .sort(function(a, b) {
-    return b.time - a.time;
+    return b.appn - a.appn;
   })
 
 // console.log(pictures);

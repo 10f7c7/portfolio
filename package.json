@@ -33,8 +33,12 @@
   "description": "",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
+    "buffer-writer": "^2.0.0",
     "express": "^5.1.0",
+    "f5stegojs": "^0.1.2",
+    "jpeg-js": "^0.4.4",
     "npm-watch": "^0.13.0",
+    "sharp": "^0.34.4",
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
