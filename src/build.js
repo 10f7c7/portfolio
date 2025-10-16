@@ -78,7 +78,7 @@ const picturesSorted = pictures.map(function(file) {
   const path = "src/img/collections" + '/' + file.name;
   const input = fs.readFileSync(path);
   stegger.parse(input);
-  const APPn = String.fromCharCode(stegger.getAPPn(0xEF));
+  const APPn = String.fromCharCode(...stegger.getAPPn(0xEF));
 
 
   return {
@@ -140,3 +140,6 @@ collectionsindexHTML = collectionsindexHTML.replace("%footer%", footerHTML);
 
 fs.writeFileSync("./build/collections/index.html", collectionsindexHTML);
 
+
+
+console.log("done building");

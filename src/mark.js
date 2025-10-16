@@ -36,13 +36,11 @@ for (var i = 0; i < pictures.length; i++) {
   const input = fs.readFileSync(path);
   stegger.parse(input);
   const APPn = stegger.getAPPn(0xEF);
-  console.log(APPn || "nah");
+  console.log((APPn || "nah") == APPn ? String.fromCharCode(...APPn) : "nah");
   if (APPn == null) {
     picturesUnmarked.push(path);
-  } else {
-  }
-  if (maxAPPn < Number(String.fromCharCode(APPn))) {
-    maxAPPn = String.fromCharCode(APPn);
+  } else if (maxAPPn < Number(String.fromCharCode(...APPn))) {
+    maxAPPn = String.fromCharCode(...APPn);
   }
 
 
